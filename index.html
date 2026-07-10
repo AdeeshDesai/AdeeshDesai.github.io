@@ -1,0 +1,399 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Adeesh Desai</title>
+<meta name="description" content="Adeesh Desai — Robotics M.S. student at Purdue University (MARS Lab), working on tactile sensing and contact-rich manipulation.">
+<style>
+  :root {
+    --paper: #f7f7f5;
+    --panel: #ffffff;
+    --ink: #1a1b1e;
+    --muted: #5c5f66;
+    --faint: #83868d;
+    --hairline: #e5e4e0;
+    --accent: #cf4a1e;
+    --accent-soft: #cf4a1e18;
+    --chip: #ececea;
+    --serif: "Charter", "Iowan Old Style", "Palatino Linotype", "Cambria", Georgia, serif;
+    --sans: system-ui, -apple-system, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+    --mono: ui-monospace, "SF Mono", "JetBrains Mono", "Menlo", Consolas, monospace;
+  }
+  @media (prefers-color-scheme: dark) {
+    :root {
+      --paper: #141518;
+      --panel: #1b1d21;
+      --ink: #e9e9ec;
+      --muted: #9a9da4;
+      --faint: #767981;
+      --hairline: #2a2c31;
+      --accent: #ff7a4d;
+      --accent-soft: #ff7a4d1f;
+      --chip: #24262b;
+    }
+  }
+  :root[data-theme="light"] {
+    --paper: #f7f7f5; --panel: #ffffff; --ink: #1a1b1e; --muted: #5c5f66;
+    --faint: #83868d; --hairline: #e5e4e0; --accent: #cf4a1e; --accent-soft: #cf4a1e18; --chip: #ececea;
+  }
+  :root[data-theme="dark"] {
+    --paper: #141518; --panel: #1b1d21; --ink: #e9e9ec; --muted: #9a9da4;
+    --faint: #767981; --hairline: #2a2c31; --accent: #ff7a4d; --accent-soft: #ff7a4d1f; --chip: #24262b;
+  }
+
+  * { box-sizing: border-box; }
+  html { -webkit-text-size-adjust: 100%; }
+  body {
+    margin: 0;
+    background: var(--paper);
+    color: var(--ink);
+    font-family: var(--sans);
+    font-size: 17px;
+    line-height: 1.66;
+    -webkit-font-smoothing: antialiased;
+    text-rendering: optimizeLegibility;
+  }
+  .wrap {
+    max-width: 720px;
+    margin: 0 auto;
+    padding: clamp(2.2rem, 6vw, 4.5rem) clamp(1.2rem, 5vw, 1.6rem) 4rem;
+  }
+
+  a { color: var(--accent); text-decoration: none; }
+  a:hover { text-decoration: underline; text-underline-offset: 2px; }
+  a:focus-visible { outline: 2px solid var(--accent); outline-offset: 2px; border-radius: 2px; }
+
+  /* ---------- Header ---------- */
+  header {
+    display: grid;
+    grid-template-columns: 1fr auto;
+    gap: clamp(1.2rem, 4vw, 2.2rem);
+    align-items: start;
+  }
+  .name {
+    font-family: var(--serif);
+    font-weight: 600;
+    font-size: clamp(2.05rem, 5.5vw, 2.7rem);
+    line-height: 1.05;
+    letter-spacing: -0.015em;
+    margin: 0 0 0.55rem;
+    text-wrap: balance;
+  }
+  .affil { color: var(--muted); font-size: 0.98rem; line-height: 1.5; }
+  .affil strong { color: var(--ink); font-weight: 600; }
+
+  /* Taxel-grid monogram avatar (tactile sensor array motif) */
+  .avatar {
+    position: relative;
+    width: clamp(96px, 26vw, 128px);
+    aspect-ratio: 1;
+    border-radius: 16px;
+    border: 1px solid var(--hairline);
+    background:
+      radial-gradient(circle at 32% 30%, var(--accent-soft), transparent 60%),
+      radial-gradient(var(--hairline) 1.4px, transparent 1.5px) 0 0 / 14px 14px,
+      var(--panel);
+    background-position: center;
+    display: grid;
+    place-items: center;
+    overflow: hidden;
+    box-shadow: 0 1px 3px rgba(0,0,0,0.05);
+  }
+  .avatar span {
+    font-family: var(--serif);
+    font-weight: 600;
+    font-size: clamp(1.9rem, 6vw, 2.5rem);
+    letter-spacing: 0.02em;
+    color: var(--ink);
+    mix-blend-mode: normal;
+  }
+  .avatar::after {
+    content: "";
+    position: absolute; inset: 0;
+    background: radial-gradient(circle at 68% 74%, var(--accent-soft), transparent 45%);
+  }
+
+  /* ---------- Link row ---------- */
+  .links {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.35rem 0.5rem;
+    margin: 1.5rem 0 0;
+    font-family: var(--mono);
+    font-size: 0.76rem;
+    letter-spacing: 0.02em;
+  }
+  .links a {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.4ch;
+    padding: 0.34rem 0.7rem;
+    border: 1px solid var(--hairline);
+    border-radius: 999px;
+    color: var(--muted);
+    background: var(--panel);
+    transition: color .15s, border-color .15s;
+  }
+  .links a:hover { color: var(--accent); border-color: var(--accent); text-decoration: none; }
+  .links a .dot { color: var(--accent); }
+
+  /* ---------- Sections ---------- */
+  section { margin-top: clamp(2.4rem, 6vw, 3.2rem); }
+  h2 {
+    font-family: var(--mono);
+    font-size: 0.72rem;
+    font-weight: 600;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    color: var(--faint);
+    margin: 0 0 1.2rem;
+    padding-bottom: 0.55rem;
+    border-bottom: 1px solid var(--hairline);
+    display: flex;
+    align-items: center;
+    gap: 0.6ch;
+  }
+  h2::before {
+    content: "";
+    width: 7px; height: 7px;
+    background: var(--accent);
+    border-radius: 2px;
+    flex: none;
+  }
+  p { margin: 0 0 1rem; }
+  .bio p:last-child { margin-bottom: 0; }
+  .lede { color: var(--ink); }
+
+  /* ---------- News ---------- */
+  .news { display: flex; flex-direction: column; gap: 0.85rem; }
+  .news .item {
+    display: grid;
+    grid-template-columns: 6.2rem 1fr;
+    gap: 0.9rem;
+    align-items: baseline;
+  }
+  .news time {
+    font-family: var(--mono);
+    font-size: 0.74rem;
+    color: var(--accent);
+    letter-spacing: 0.01em;
+    padding-top: 0.15rem;
+  }
+  .news .body { color: var(--muted); font-size: 0.97rem; }
+  .news .body strong { color: var(--ink); font-weight: 600; }
+
+  /* ---------- Research ---------- */
+  .research { display: grid; gap: 1.1rem; }
+  .research .r {
+    display: grid;
+    grid-template-columns: auto 1fr;
+    gap: 0.9rem;
+    align-items: baseline;
+  }
+  .research .n {
+    font-family: var(--mono);
+    font-size: 0.78rem;
+    color: var(--accent);
+    font-weight: 600;
+  }
+  .research .r-body strong { font-weight: 600; }
+  .research .r-body span { color: var(--muted); }
+
+  /* ---------- Publications ---------- */
+  .pubs { display: flex; flex-direction: column; gap: 1.7rem; }
+  .pub { display: grid; gap: 0.32rem; }
+  .pub .venue {
+    display: inline-flex;
+    align-self: start;
+    align-items: center;
+    font-family: var(--mono);
+    font-size: 0.68rem;
+    letter-spacing: 0.03em;
+    color: var(--muted);
+    background: var(--chip);
+    border-radius: 4px;
+    padding: 0.16rem 0.5rem;
+    margin-bottom: 0.2rem;
+  }
+  .pub .venue.hl { color: var(--accent); background: var(--accent-soft); }
+  .pub .title { font-weight: 600; line-height: 1.4; }
+  .pub .authors { color: var(--muted); font-size: 0.94rem; line-height: 1.5; }
+  .pub .authors .me { color: var(--ink); font-weight: 600; border-bottom: 1.5px solid var(--accent); }
+  .pub .res {
+    font-family: var(--mono);
+    font-size: 0.74rem;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.85rem;
+    margin-top: 0.15rem;
+  }
+  .pub .res a { color: var(--muted); }
+  .pub .res a:hover { color: var(--accent); }
+
+  /* ---------- Honors ---------- */
+  .honors { display: flex; flex-direction: column; gap: 0.7rem; }
+  .honors .h { display: grid; grid-template-columns: auto 1fr; gap: 0.9rem; align-items: baseline; }
+  .honors time { font-family: var(--mono); font-size: 0.74rem; color: var(--accent); white-space: nowrap; }
+  .honors .body strong { font-weight: 600; }
+  .honors .body span { color: var(--muted); }
+
+  /* ---------- Footer ---------- */
+  footer {
+    margin-top: 3.5rem;
+    padding-top: 1.4rem;
+    border-top: 1px solid var(--hairline);
+    font-family: var(--mono);
+    font-size: 0.72rem;
+    color: var(--faint);
+    letter-spacing: 0.02em;
+  }
+
+  @media (max-width: 540px) {
+    header { grid-template-columns: 1fr; }
+    .avatar { order: -1; }
+    .news .item { grid-template-columns: 1fr; gap: 0.15rem; }
+    .honors .h { grid-template-columns: 1fr; gap: 0.15rem; }
+  }
+  @media (prefers-reduced-motion: reduce) { * { transition: none !important; } }
+</style>
+</head>
+<body>
+<main class="wrap">
+
+  <header>
+    <div class="head-text">
+      <h1 class="name">Adeesh Desai</h1>
+      <div class="affil">
+        M.S. in Robotics &middot; <strong>Purdue University</strong><br>
+        Edwardson School of Industrial Engineering<br>
+        <a href="https://www.purduemars.com/">MARS Lab</a>, advised by Prof. Yu She
+      </div>
+    </div>
+    <div class="avatar" aria-label="Adeesh Desai monogram"><span>AD</span></div>
+  </header>
+
+  <nav class="links" aria-label="Profiles and contact">
+    <a href="mailto:3d@factoryintelligence.com"><span class="dot">&#9679;</span> Email</a>
+    <a href="#" rel="me"><span class="dot">&#9679;</span> Google&nbsp;Scholar</a>
+    <a href="https://www.linkedin.com/in/adeeshdesai"><span class="dot">&#9679;</span> LinkedIn</a>
+    <a href="#"><span class="dot">&#9679;</span> GitHub</a>
+    <a href="https://arxiv.org/a/desai_a"><span class="dot">&#9679;</span> arXiv</a>
+  </nav>
+
+  <section class="bio" aria-label="About">
+    <p class="lede">I am a Master&rsquo;s student in Robotics at Purdue University, working in the
+      <strong>Mechanisms And Robotic Systems (MARS) Lab</strong> with Prof. Yu She. My research gives
+      robots a sense of touch &mdash; I study <em>tactile sensing</em> and <em>contact-rich manipulation</em>,
+      and the representations and world models that let a robot reason about the moment its gripper meets the world.</p>
+    <p>Lately I&rsquo;ve been asking what actually makes tactile signals useful: how force-field
+      representations compare to raw tactile images in contact-dominated tasks, whether a robot can
+      <em>imagine</em> touch it never physically measured, and how to fold contact into world models that
+      plan. Alongside my research I work on robot learning at <a href="https://factoryintelligence.com">Factory Intelligence</a>.</p>
+  </section>
+
+  <section aria-label="News">
+    <h2>News</h2>
+    <div class="news">
+      <div class="item">
+        <time>Jul 2026</time>
+        <div class="body">New preprint &mdash; <strong>Imagining the Sense of Touch (TacImag)</strong>:
+          predicting tactile feedback from vision to guide manipulation, on arXiv.</div>
+      </div>
+      <div class="item">
+        <time>Jun 2026</time>
+        <div class="body">New preprint &mdash; <strong>ContactWorld</strong>, a benchmark for vision&ndash;tactile
+          world models in contact-rich manipulation, on arXiv.</div>
+      </div>
+      <div class="item">
+        <time>Mar 2026</time>
+        <div class="body"><strong>CONTACT</strong> accepted to <strong>IROS&nbsp;2026</strong>. &#127881;</div>
+      </div>
+      <div class="item">
+        <time>May 2025</time>
+        <div class="body">Team&nbsp;MARS took <strong>3rd place</strong> at the WBCD Competition at
+          <strong>ICRA&nbsp;2025</strong>.</div>
+      </div>
+    </div>
+  </section>
+
+  <section aria-label="Research">
+    <h2>Research</h2>
+    <div class="research">
+      <div class="r">
+        <div class="n">01</div>
+        <div class="r-body"><strong>Tactile sensing &amp; representations.</strong>
+          <span>What form should touch take? Comparing force-field against raw tactile-image
+          representations for contact-dominated tasks.</span></div>
+      </div>
+      <div class="r">
+        <div class="n">02</div>
+        <div class="r-body"><strong>Contact-rich manipulation &amp; disassembly.</strong>
+          <span>Using touch to guide policies through the hard-contact regimes where vision alone breaks down.</span></div>
+      </div>
+      <div class="r">
+        <div class="n">03</div>
+        <div class="r-body"><strong>Vision&ndash;tactile world models.</strong>
+          <span>Learning representations that are spatially structured and temporally continuous enough to plan through contact.</span></div>
+      </div>
+    </div>
+  </section>
+
+  <section aria-label="Publications">
+    <h2>Publications</h2>
+    <div class="pubs">
+
+      <article class="pub">
+        <span class="venue">Preprint &middot; arXiv 2026</span>
+        <div class="title">Imagining the Sense of Touch: Touch-Informed Manipulation via Imagined Tactile Representations</div>
+        <div class="authors">Zhiyuan Zhang, <span class="me">Adeesh Desai</span>, Jyun-Chi Hu, Yosuke Saka,
+          Quan Khanh Luu, Jiuzhou Lei, Davood Soleymanzadeh, Bihao Zhang, Minghui Zheng, Yu She</div>
+        <div class="res">
+          <a href="https://arxiv.org/abs/2607.01684">arXiv</a>
+          <a href="https://arxiv.org/pdf/2607.01684">PDF</a>
+        </div>
+      </article>
+
+      <article class="pub">
+        <span class="venue">Preprint &middot; arXiv 2026</span>
+        <div class="title">ContactWorld: What Matters in Vision-Tactile World Models for Contact-Rich Manipulation</div>
+        <div class="authors">Zhiyuan Zhang, Pokuang Zhou, Kaidi Zhang, <span class="me">Adeesh Desai</span>,
+          Temitope Amosa, Davood Soleymanzadeh, Jiuzhou Lei, Minghui Zheng, Yu She</div>
+        <div class="res">
+          <a href="https://arxiv.org/abs/2606.13877">arXiv</a>
+          <a href="https://arxiv.org/pdf/2606.13877">PDF</a>
+        </div>
+      </article>
+
+      <article class="pub">
+        <span class="venue hl">IROS 2026</span>
+        <div class="title">CONTACT: CONtact-aware TACTile Learning for Robotic Disassembly</div>
+        <div class="authors">Yosuke Saka, Jyun-Chi Hu, <span class="me">Adeesh Desai</span>, Zhiyuan Zhang,
+          Bihao Zhang, Quan Khanh Luu, Md Rakibul Islam Prince, Minghui Zheng, Yu She</div>
+        <div class="res">
+          <a href="https://arxiv.org/abs/2603.08560">arXiv</a>
+          <a href="https://arxiv.org/pdf/2603.08560">PDF</a>
+        </div>
+      </article>
+
+    </div>
+  </section>
+
+  <section aria-label="Honors">
+    <h2>Honors &amp; Awards</h2>
+    <div class="honors">
+      <div class="h">
+        <time>2025</time>
+        <div class="body"><strong>3rd Place</strong>, Whole-Body Control &amp; Dexterity (WBCD) Competition,
+          <span>ICRA 2025 &mdash; Team MARS, Purdue University</span></div>
+      </div>
+    </div>
+  </section>
+
+  <footer>
+    Adeesh Desai &middot; West Lafayette, IN &middot; Last updated Jul 2026
+  </footer>
+
+</main>
+</body>
+</html>
