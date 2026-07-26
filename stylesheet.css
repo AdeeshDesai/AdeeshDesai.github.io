@@ -107,7 +107,7 @@ h2 {
 }
 .gallery a { line-height: 0; }
 .gallery img {
-  height: 190px;
+  height: 150px;
   width: auto;
   object-fit: cover;
   border-radius: 10px;
@@ -118,7 +118,7 @@ h2 {
 .projvid {
   display: block;
   width: 100%;
-  max-width: 560px;
+  max-width: 420px;
   border-radius: 12px;
   margin: 10px 0 4px;
   border: 1px solid #e2e2e2;
@@ -127,7 +127,7 @@ h2 {
 .ytembed {
   position: relative;
   width: 100%;
-  max-width: 560px;
+  max-width: 420px;
   aspect-ratio: 16 / 9;
   margin: 10px 0 4px;
   border-radius: 12px;
