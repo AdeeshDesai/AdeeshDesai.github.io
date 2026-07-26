@@ -86,7 +86,18 @@ h2 {
 }
 .entry-sub { color: #444; }
 .entry-meta { color: #777; font-size: 13px; }
-.tags { color: #888; font-size: 12.5px; margin-top: 4px; }
+.tags {
+  display: inline-block;
+  color: #33406b;
+  font-weight: 600;
+  font-size: 12.5px;
+  line-height: 1.9;
+  margin-top: 6px;
+  background: #eef2fb;
+  padding: 3px 9px;
+  border-radius: 6px;
+}
+.reflinks a { font-weight: 600; }
 .badge {
   display: inline-block;
   background: #ffffd0;
@@ -103,11 +114,11 @@ h2 {
   display: flex;
   flex-wrap: wrap;
   gap: 10px;
-  margin-top: 12px;
+  margin: 12px 0 32px;
 }
 .gallery a { line-height: 0; }
 .gallery img {
-  height: 150px;
+  height: 115px;
   width: auto;
   object-fit: cover;
   border-radius: 10px;
@@ -120,7 +131,7 @@ h2 {
   width: 100%;
   max-width: 420px;
   border-radius: 12px;
-  margin: 10px 0 4px;
+  margin: 10px 0 32px;
   border: 1px solid #e2e2e2;
 }
 
@@ -129,7 +140,7 @@ h2 {
   width: 100%;
   max-width: 420px;
   aspect-ratio: 16 / 9;
-  margin: 10px 0 4px;
+  margin: 10px 0 32px;
   border-radius: 12px;
   overflow: hidden;
   border: 1px solid #e2e2e2;
