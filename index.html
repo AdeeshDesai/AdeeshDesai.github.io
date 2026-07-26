@@ -102,7 +102,7 @@
 
   /* ---------- Research / Publications ---------- */
   .pubs { display: flex; flex-direction: column; gap: 1.6rem; }
-  .pub { display: grid; grid-template-columns: 168px 1fr; gap: 1.2rem; align-items: start; }
+  .pub { display: grid; grid-template-columns: 320px 1fr; gap: 1.6rem; align-items: start; }
   .teaser {
     aspect-ratio: 16 / 10; border-radius: 10px; border: 1px solid var(--hairline); overflow: hidden;
     position: relative; background:
@@ -161,7 +161,7 @@
     .avatar { order: -1; }
     .news .item { grid-template-columns: 1fr; gap: 0.15rem; }
     .pub { grid-template-columns: 1fr; }
-    .teaser { max-width: 260px; }
+    .teaser { max-width: 100%; }
     .card-head { flex-direction: column; gap: 0.2rem; }
   }
   @media (prefers-reduced-motion: reduce) { * { transition: none !important; scroll-behavior: auto; } }
