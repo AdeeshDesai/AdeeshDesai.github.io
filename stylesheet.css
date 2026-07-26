@@ -1,0 +1,103 @@
+@import url('https://fonts.googleapis.com/css2?family=Lato:ital,wght@0,400;0,700;1,400;1,700&display=swap');
+
+a {
+  color: #1772d0;
+  text-decoration: none;
+}
+
+a:focus,
+a:hover {
+  color: #f09228;
+  text-decoration: none;
+}
+
+body,
+td,
+th,
+tr,
+p,
+a,
+li,
+ul,
+ol {
+  font-family: 'Lato', Verdana, Helvetica, sans-serif;
+  font-size: 14px;
+}
+
+body {
+  margin: 0;
+  color: #000;
+}
+
+strong {
+  font-family: 'Lato', Verdana, Helvetica, sans-serif;
+  font-size: 14px;
+}
+
+h2 {
+  margin: 0;
+  font-weight: normal;
+  font-family: 'Lato', Verdana, Helvetica, sans-serif;
+  font-size: 22px;
+}
+
+.papertitle {
+  font-family: 'Lato', Verdana, Helvetica, sans-serif;
+  font-size: 17px;
+  font-weight: 600;
+  color: #112057;
+  margin-bottom: 6px;
+  line-height: 1.4;
+  display: block;
+}
+
+.name {
+  padding-top: 20px;
+  margin: 0;
+  font-family: 'Lato', Verdana, Helvetica, sans-serif;
+  font-size: 32px;
+}
+
+/* co-first-author marker */
+.star { color: #e0322f; font-weight: 700; }
+
+/* profile photo placeholder monogram */
+.monogram {
+  width: 100%;
+  aspect-ratio: 1 / 1;
+  border-radius: 50%;
+  background: #112057;
+  color: #fff;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-family: 'Lato', Verdana, Helvetica, sans-serif;
+  font-size: 60px;
+  font-weight: 700;
+  letter-spacing: 2px;
+}
+
+/* projects / experience / awards entries */
+.entry-title {
+  font-family: 'Lato', Verdana, Helvetica, sans-serif;
+  font-size: 16px;
+  font-weight: 600;
+  color: #112057;
+}
+.entry-sub { color: #444; }
+.entry-meta { color: #777; font-size: 13px; }
+.tags { color: #888; font-size: 12.5px; margin-top: 4px; }
+.badge {
+  display: inline-block;
+  background: #ffffd0;
+  color: #7a5c00;
+  font-size: 12px;
+  font-weight: 700;
+  padding: 1px 7px;
+  border-radius: 4px;
+  margin-left: 6px;
+}
+
+span.highlight {
+  background-color: #ffffd0;
+}
