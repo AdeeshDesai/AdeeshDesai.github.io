@@ -102,7 +102,7 @@
 
   /* ---------- Research / Publications ---------- */
   .pubs { display: flex; flex-direction: column; gap: 1.6rem; }
-  .pub { display: grid; grid-template-columns: 320px 1fr; gap: 1.6rem; align-items: start; }
+  .pub { display: grid; grid-template-columns: minmax(0, 0.82fr) 1.18fr; gap: 1.6rem; align-items: start; }
   .teaser {
     aspect-ratio: 16 / 10; border-radius: 10px; border: 1px solid var(--hairline); overflow: hidden;
     position: relative; background:
@@ -121,6 +121,8 @@
   .pub .title { font-weight: 600; line-height: 1.4; margin-bottom: 0.2rem; }
   .pub .authors { color: var(--muted); font-size: 0.92rem; line-height: 1.5; }
   .pub .authors .me { color: var(--ink); font-weight: 600; border-bottom: 1.5px solid var(--accent); }
+  .star { color: var(--accent); font-weight: 600; }
+  .eqnote { color: var(--muted); font-size: 0.82rem; margin: -0.4rem 0 1rem; }
   .pub .desc { color: var(--muted); font-size: 0.9rem; margin: 0.4rem 0 0; }
   .pub .res { font-family: var(--mono); font-size: 0.73rem; display: flex; flex-wrap: wrap; gap: 0.8rem; margin-top: 0.5rem; }
   .pub .res a { color: var(--muted); }
@@ -215,6 +217,7 @@
 
   <section aria-label="Research">
     <h2>Research</h2>
+    <p class="eqnote"><span class="star">*</span> indicates equal contribution.</p>
     <div class="pubs">
 
       <article class="pub">
@@ -222,7 +225,7 @@
         <div>
           <span class="venue">Preprint &middot; arXiv 2026</span>
           <div class="title">Imagining the Sense of Touch: Touch-Informed Manipulation via Imagined Tactile Representations</div>
-          <div class="authors">Zhiyuan Zhang, <span class="me">Adeesh Desai</span>, Jyun-Chi Hu, Yosuke Saka, Quan Khanh Luu, Jiuzhou Lei, Davood Soleymanzadeh, Bihao Zhang, Minghui Zheng, Yu She</div>
+          <div class="authors">Zhiyuan Zhang<span class="star">*</span>, <span class="me">Adeesh Desai<span class="star">*</span></span>, Jyun-Chi Hu, Yosuke Saka, Quan Khanh Luu, Jiuzhou Lei, Davood Soleymanzadeh, Bihao Zhang, Minghui Zheng, Yu She</div>
           <p class="desc">TacImag learns to predict task-relevant tactile representations from visual observations, enabling touch-informed manipulation at deployment without physical tactile sensors.</p>
           <div class="res">
             <a href="https://tacimag.github.io/">Website</a>
@@ -239,7 +242,7 @@
         <div>
           <span class="venue">Preprint &middot; arXiv 2026</span>
           <div class="title">ContactWorld: What Matters in Vision-Tactile World Models for Contact-Rich Manipulation</div>
-          <div class="authors">Zhiyuan Zhang, Pokuang Zhou, Kaidi Zhang, <span class="me">Adeesh Desai</span>, Temitope Amosa, Davood Soleymanzadeh, Jiuzhou Lei, Minghui Zheng, Yu She</div>
+          <div class="authors">Zhiyuan Zhang<span class="star">*</span>, Pokuang Zhou<span class="star">*</span>, Kaidi Zhang, <span class="me">Adeesh Desai</span>, Temitope Amosa, Davood Soleymanzadeh, Jiuzhou Lei, Minghui Zheng, Yu She</div>
           <p class="desc">ContactWorld reveals that representation structure matters, tactile benefits depend on cross-modal compatibility, and tactile sensing becomes increasingly valuable for long-horizon planning.</p>
           <div class="res">
             <a href="https://contact-world.github.io/">Website</a>
@@ -256,7 +259,7 @@
         <div>
           <span class="venue hl">IROS 2026</span>
           <div class="title">CONTACT: CONtact-aware TACTile Learning for Robotic Disassembly</div>
-          <div class="authors">Yosuke Saka, Jyun-Chi Hu, <span class="me">Adeesh Desai</span>, Zhiyuan Zhang, Bihao Zhang, Quan Khanh Luu, Md Rakibul Islam Prince, Minghui Zheng, Yu She</div>
+          <div class="authors">Yosuke Saka<span class="star">*</span>, Jyun-Chi Hu<span class="star">*</span>, <span class="me">Adeesh Desai<span class="star">*</span></span>, Zhiyuan Zhang<span class="star">*</span>, Bihao Zhang, Quan Khanh Luu, Md Rakibul Islam Prince, Minghui Zheng, Yu She</div>
           <p class="desc">CONTACT reveals when and why tactile sensing matters for robotic disassembly, highlighting the effectiveness of structured tactile force-field representations in contact-dominated tasks.</p>
           <div class="res">
             <a href="https://vict0rhu.github.io/CONTACT-Website/">Website</a>
